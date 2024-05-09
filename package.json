@@ -1,0 +1,59 @@
+{
+  "name": "eluna24-devday",
+  "description": "ELUNA24 DevDay demo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "maintainers": [
+    "Mehmet Celik"
+  ],
+  "primo": {
+    "url": "https://libis-kul-psb.primo.exlibrisgroup.com",
+    "institution": "32KUL_KUL",
+    "vidId": "eluna24",
+    "build": {
+      "views": [
+        "eluna24"
+      ],
+      "dist": "./dist",
+      "resources": "./resources",
+      "package": "./package",
+      "tmp": "./tmpPackage"
+    }
+  },
+  "scripts": {
+    "start": "cross-env-shell \"primoServe --vid $npm_package_primo_institution:$npm_package_primo_vidId --proxy $npm_package_primo_url --dir ./dist --ve\"",
+    "build": "cross-env-shell NODE_ENV=production \"rimraf dist/ && webpack\"",
+    "watch": "webpack --watch",
+    "package": "yarn build && node make_package.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@webpack-cli/generators": "^3.0.7",
+    "adm-zip": "^0.5.9",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-import-directory": "^1.1.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^7.1.1",
+    "file-loader": "^6.2.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.12",
+    "html-loader": "^5.0.0",
+    "import": "^0.0.6",
+    "mini-css-extract-plugin": "^2.6.0",
+    "primo-serve": "^0.0.17",
+    "rimraf": "^5.0.5",
+    "sass": "^1.49.9",
+    "sass-loader": "^14.2.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "sync-fetch": "^0.5.2"
+  }
+}
