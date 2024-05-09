@@ -3,6 +3,7 @@ import measureSearchHTML from './measureSearch.html';
 class MeasureSearchController {
     constructor() {
         console.log('constructor measure-search');
+        addEventListener('pnxBaseURLEvent', (event) => { document.querySelector('measure-search').classList.toggle('busy')})
     }
  }
  
