@@ -1,3 +1,5 @@
+import State from '../state';
+
 export default class Component {
     /**
      * Get a List of all components
@@ -5,11 +7,18 @@ export default class Component {
      * @returns [component]
      */
     static get list() {
+        // set a different prefix with
+        // Primo.state.set('componentPrefix', /^abc-/)
+        // prefix must be a RegExp
+        let prefix = State.get('componentPrefix') ? State.get('componentPrefix') : /^prm-|primo-/        
+        if (!/RegExp/.test(Object.prototype.toString.call(prefix))) {
+            prefix = new RegExp(prefix)
+        }
         let tags = document.getElementsByTagName('*');
         let components = [];
         for (let tag of tags) {
             let tagName = tag.localName;
-            if (/^prm-|primo-|solo-/.test(tagName)) {
+            if (prefix.test(tagName)) {
                 let component = { name: tagName, obj: angular.element(tag) };
                 components.push(component);
             }
