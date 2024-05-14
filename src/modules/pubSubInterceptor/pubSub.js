@@ -43,7 +43,12 @@ export default class PrimoPubSub {
     //* get all WebService base urls
     get restBaseURLs() {
         try {
-            return angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
+            let baseUrls =  angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
+            let otherBaseUrls = {
+                summonSuggestURL: '/eautocomplete/person/suggest',
+                kuleuvenSuggestURL: '/search/wieiswie'
+            };
+            return { ...baseUrls, ...otherBaseUrls};
         } catch (e) {
             console.error('restBaseURLs: ', e);
             return {};
