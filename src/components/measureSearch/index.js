@@ -7,7 +7,7 @@ class MeasureSearchController {
     }
  }
  
- export let measuereSearchComponent = {
+ export let measureSearchComponent = {
     name: 'measure-search',
     config: {
         bindings: {parentCtrl: '<'},
